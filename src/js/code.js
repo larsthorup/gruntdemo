@@ -3,7 +3,7 @@ function durationInEnglish(milliseconds) {
     if(seconds === 0) {
         return 'now';
     } else if(seconds < 60) {
-        return seconds + ' seconds ago';
+        return seconds + ' second ago';
     } else {
         return 'whenever';
     }
