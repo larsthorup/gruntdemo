@@ -25,6 +25,8 @@ module.exports = function (grunt) {
             }
         }
     };
+    gruntConfig.jasmine.src.options.keepRunner = true;
+
 
     // coverage
     gruntConfig.jasmine.istanbul = {
