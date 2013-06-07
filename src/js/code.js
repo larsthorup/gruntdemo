@@ -5,6 +5,6 @@ function durationInEnglish(milliseconds) {
     } else if(seconds < 60) {
         return seconds + ' seconds ago';
     } else {
-        return 'whenever';
+        return 'whenever'
     }
 }
