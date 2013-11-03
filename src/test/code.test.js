@@ -7,7 +7,7 @@ describe('durationInEnglish', function () {
     it('should return "x seconds ago" when duration is less than a minute', function () {
         var now = new Date(2013, 4, 19, 11, 0, 17);
         var then = new Date(2013, 4, 19, 11, 0, 0);
-        expect(durationInEnglish(now - then)).toBe('18 seconds ago');
+        expect(durationInEnglish(now - then)).toBe('17 seconds ago');
     });
 
 });
