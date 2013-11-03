@@ -1,6 +1,11 @@
 module.exports = function (grunt) {
     var gruntConfig = {};
 
+
+    // convenience
+    grunt.registerTask('default', ['lint', 'test', 'coverage']);
+
+
     // lint
     grunt.loadNpmTasks('grunt-contrib-jshint');
     gruntConfig.jshint = {
@@ -9,6 +14,7 @@ module.exports = function (grunt) {
             'src/**/*.js'
         ]
     };
+    grunt.registerTask('lint', ['jshint']);
 
     // test
     grunt.loadNpmTasks('grunt-contrib-jasmine');
@@ -26,7 +32,7 @@ module.exports = function (grunt) {
         }
     };
     gruntConfig.jasmine.src.options.keepRunner = true;
-
+    grunt.registerTask('test', ['jasmine:src']);
 
     // coverage
     gruntConfig.jasmine.istanbul = {
@@ -44,6 +50,7 @@ module.exports = function (grunt) {
             }
         }
     };
+    grunt.registerTask('coverage', ['jasmine:istanbul']);
 
     // grunt
     grunt.initConfig(gruntConfig);
