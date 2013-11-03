@@ -3,7 +3,7 @@ module.exports = function (grunt) {
 
 
     // convenience
-    grunt.registerTask('default', ['lint', 'test', 'coverage']);
+    grunt.registerTask('default', ['lint', 'test', 'coverage', 'karma:once']);
 
 
     // lint
@@ -33,6 +33,34 @@ module.exports = function (grunt) {
     };
     gruntConfig.jasmine.src.options.keepRunner = true;
     grunt.registerTask('test', ['jasmine:src']);
+
+
+    // browser test
+    // Note: set environment variable: set FIREFOX_BIN="C:\Program Files (x86)\Mozilla Firefox\firefox.exe"
+    grunt.loadNpmTasks('grunt-karma');
+    gruntConfig.karma = {};
+    gruntConfig.karma.server = {
+        options: {
+            plugins: ['karma-jasmine', 'karma-firefox-launcher'],
+            frameworks: ['jasmine'],
+            files: ['src/js/**/*.js', 'src/test/**/*.test.js'],
+            browsers: ['Firefox']
+        },
+        background: true
+    };
+    gruntConfig.karma.once = {
+        options: gruntConfig.karma.server.options,
+        singleRun: true
+    };
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    gruntConfig.watch = {
+        karma: {
+            files: ['src/**/*.js' ],
+            tasks: ['karma:server:run']
+        }
+    };
+    grunt.registerTask('browsertest', ['karma:server:start', 'watch:karma']);
+
 
     // coverage
     gruntConfig.jasmine.istanbul = {
