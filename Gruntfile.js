@@ -59,7 +59,7 @@ module.exports = function (grunt) {
             tasks: ['karma:server:run']
         }
     };
-    grunt.registerTask('browsertest', ['karma:server:start', 'watch:karma']);
+    grunt.registerTask('karma:forever', ['karma:server:start', 'watch:karma']);
 
 
     // coverage
