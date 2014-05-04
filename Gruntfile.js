@@ -36,7 +36,6 @@ module.exports = function (grunt) {
 
 
     // browser test
-    // Note: set environment variable: set FIREFOX_BIN="C:\Program Files (x86)\Mozilla Firefox\firefox.exe"
     grunt.loadNpmTasks('grunt-karma');
     gruntConfig.karma = {};
     gruntConfig.karma.server = {
